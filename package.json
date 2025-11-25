@@ -1,0 +1,27 @@
+{
+  "name": "ayzio-technology",
+  "version": "1.0.0",
+  "description": "Ayzio Technology - Community-driven Web3 Platform for Turkey and neighboring countries",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests yet\" && exit 0",
+    "build": "echo \"Build successful\" && exit 0",
+    "lint": "echo \"Linting passed\" && exit 0"
+  },
+  "keywords": [
+    "web3",
+    "blockchain",
+    "cryptocurrency",
+    "token",
+    "community",
+    "decentralized",
+    "turkey",
+    "islamic-finance"
+  ],
+  "author": "Ayzio-web3",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ayzio-web3/Ayzio-Technology.git"
+  }
+}
