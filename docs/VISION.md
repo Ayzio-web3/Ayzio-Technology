@@ -190,9 +190,9 @@ Without discrimination, anyone who shares the platform values can participate.
 - **Şeffaf Oylama / Transparent Voting**
 
 ### 3. Stake Mekanizması
-- **Günlük %1 Ödül / 1% Daily Reward**
+- **Günlük %0.1 Ödül / 0.1% Daily Reward (~36.5% simple APY)**
 - **Esnek Çekim / Flexible Withdrawal**
-- **Compound Getiri / Compound Returns**
+- **Basit Faiz / Simple Interest (claim to compound)**
 
 ### 4. Katkı Sistemi
 - **Aktivite Ödülleri / Activity Rewards**

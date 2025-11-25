@@ -13,15 +13,17 @@ async function main() {
   console.log("📦 Deploying AyzioToken...");
   const AyzioToken = await hre.ethers.getContractFactory("AyzioToken");
   const ayzioToken = await AyzioToken.deploy();
-  await ayzioToken.deployed();
-  console.log("✅ AyzioToken deployed to:", ayzioToken.address);
+  await ayzioToken.waitForDeployment();
+  const ayzioTokenAddress = await ayzioToken.getAddress();
+  console.log("✅ AyzioToken deployed to:", ayzioTokenAddress);
 
   // Deploy CommunityGovernance
   console.log("\n📦 Deploying CommunityGovernance...");
   const CommunityGovernance = await hre.ethers.getContractFactory("CommunityGovernance");
   const governance = await CommunityGovernance.deploy();
-  await governance.deployed();
-  console.log("✅ CommunityGovernance deployed to:", governance.address);
+  await governance.waitForDeployment();
+  const governanceAddress = await governance.getAddress();
+  console.log("✅ CommunityGovernance deployed to:", governanceAddress);
 
   // Configuration
   console.log("\n⚙️  Configuring contracts...");
@@ -34,8 +36,8 @@ async function main() {
   console.log("🎉 DEPLOYMENT SUCCESSFUL!");
   console.log("=".repeat(60));
   console.log("\n📋 Contract Addresses:");
-  console.log("   AyzioToken:", ayzioToken.address);
-  console.log("   CommunityGovernance:", governance.address);
+  console.log("   AyzioToken:", ayzioTokenAddress);
+  console.log("   CommunityGovernance:", governanceAddress);
   console.log("\n💡 Next Steps:");
   console.log("   1. Verify contracts on block explorer");
   console.log("   2. Update .env with contract addresses");
@@ -51,8 +53,8 @@ async function main() {
     deployer: deployer.address,
     timestamp: new Date().toISOString(),
     contracts: {
-      AyzioToken: ayzioToken.address,
-      CommunityGovernance: governance.address,
+      AyzioToken: ayzioTokenAddress,
+      CommunityGovernance: governanceAddress,
     },
   };
 
