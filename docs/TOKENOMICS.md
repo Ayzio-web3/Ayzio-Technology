@@ -64,7 +64,7 @@
 **Amaç:** Token sahiplerini ödüllendirmek ve platformu güçlendirmek
 
 **Ödül Mekanizması:**
-- Günlük %1 ödül oranı
+- Günlük %0.1 ödül oranı (Yıllık ~%36.5 APY - sürdürülebilir)
 - Compound (bileşik) faiz
 - Minimum kilitleme yok
 - İstediğiniz zaman çekebilme
@@ -209,7 +209,7 @@
 - **Sınırsız referans**
 
 #### 4. Staking
-- **Günlük %1 Ödül**
+- **Günlük %0.1 Ödül (Yıllık ~%36.5 APY)**
 - **Compound faiz**
 - **Bonus periyodlar**
 

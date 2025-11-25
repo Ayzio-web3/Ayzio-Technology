@@ -73,7 +73,7 @@ function stake(uint256 amount) external
 // Token unstaking
 function unstake(uint256 amount) external
 
-// Ödül talep etme / Claim rewards
+// Ödül talep etme / Claim rewards (0.1% daily = ~36.5% APY)
 function claimRewards() external
 
 // Topluluk katkısı kaydı / Record contribution

@@ -1,4 +1,5 @@
 const hre = require("hardhat");
+const fs = require("fs");
 
 async function main() {
   console.log("🚀 Ayzio Technology Deployment Starting...\n");
@@ -45,7 +46,6 @@ async function main() {
   console.log("=".repeat(60) + "\n");
 
   // Save deployment info
-  const fs = require("fs");
   const deploymentInfo = {
     network: hre.network.name,
     deployer: deployer.address,

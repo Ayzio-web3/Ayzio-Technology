@@ -23,5 +23,14 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/Ayzio-web3/Ayzio-Technology.git"
+  },
+  "devDependencies": {
+    "hardhat": "^2.19.0",
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.0",
+    "ethers": "^6.9.0",
+    "dotenv": "^16.3.0"
   }
 }

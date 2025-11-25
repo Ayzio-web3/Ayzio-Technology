@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity 0.8.20;
 
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -34,7 +34,8 @@ contract AyzioToken is ERC20, Ownable, Pausable {
     mapping(address => uint256) public lastContributionTime;
     
     // Constants for reward calculation
-    uint256 public constant DAILY_REWARD_RATE = 1; // 1% daily for staking
+    uint256 public constant DAILY_REWARD_RATE = 10; // 0.1% daily (36.5% APY) - sustainable rate
+    uint256 public constant REWARD_RATE_DENOMINATOR = 10000; // For precision
     uint256 public constant CONTRIBUTION_REWARD = 10 * 10**18; // 10 tokens per contribution
     
     // Events
@@ -92,17 +93,22 @@ contract AyzioToken is ERC20, Ownable, Pausable {
     
     /**
      * @dev Calculate pending rewards for a user
+     * Uses 0.1% daily rate with proper precision
      */
     function pendingRewards(address user) public view returns (uint256) {
         if (stakedBalance[user] == 0) {
-            return 0;
+            return accumulatedRewards[user];
         }
         
         uint256 stakingDuration = block.timestamp - stakingStartTime[user];
-        uint256 dailyReward = (stakedBalance[user] * DAILY_REWARD_RATE) / 100;
         uint256 daysStaked = stakingDuration / 1 days;
         
-        return (dailyReward * daysStaked) + accumulatedRewards[user];
+        // Calculate daily reward: (stakedBalance * DAILY_REWARD_RATE) / REWARD_RATE_DENOMINATOR
+        // This gives us 0.1% per day = 36.5% APY
+        uint256 dailyReward = (stakedBalance[user] * DAILY_REWARD_RATE) / REWARD_RATE_DENOMINATOR;
+        uint256 totalRewards = dailyReward * daysStaked;
+        
+        return totalRewards + accumulatedRewards[user];
     }
     
     /**
