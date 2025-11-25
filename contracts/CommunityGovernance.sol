@@ -43,8 +43,7 @@ contract CommunityGovernance is AccessControl, ReentrancyGuard {
     // State variables
     uint256 public proposalCount;
     uint256 public constant VOTING_PERIOD = 7 days;
-    uint256 public constant MIN_VOTES_REQUIRED = 100;
-    uint256 public constant QUORUM_PERCENTAGE = 10; // 10% of total voters
+    uint256 public constant MIN_VOTES_REQUIRED = 100; // Minimum votes needed for proposal
     
     mapping(uint256 => Proposal) public proposals;
     mapping(address => uint256) public votingPower;

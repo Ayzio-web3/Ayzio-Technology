@@ -121,7 +121,7 @@ function recordContribution(address user, uint256 score) external
 **Kazanma Yolları / Ways to Earn:**
 
 1. **Staking (Kilitleme):**
-   - Günlük %1 ödül / 1% daily reward
+   - Günlük %0.1 ödül / 0.1% daily reward (~36.5% simple APY)
    - Minimum kilitleme yok / No minimum lock
    - İstediğiniz zaman çekebilirsiniz / Withdraw anytime
 

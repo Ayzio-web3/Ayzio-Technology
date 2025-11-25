@@ -34,7 +34,7 @@ contract AyzioToken is ERC20, Ownable, Pausable {
     mapping(address => uint256) public lastContributionTime;
     
     // Constants for reward calculation
-    uint256 public constant DAILY_REWARD_RATE = 10; // 0.1% daily (36.5% APY) - sustainable rate
+    uint256 public constant DAILY_REWARD_RATE = 10; // 0.1% daily (36.5% simple APY)
     uint256 public constant REWARD_RATE_DENOMINATOR = 10000; // For precision
     uint256 public constant CONTRIBUTION_REWARD = 10 * 10**18; // 10 tokens per contribution
     
@@ -93,7 +93,8 @@ contract AyzioToken is ERC20, Ownable, Pausable {
     
     /**
      * @dev Calculate pending rewards for a user
-     * Uses 0.1% daily rate with proper precision
+     * Uses 0.1% daily rate with simple interest calculation
+     * Note: This is simple interest, not compound. User must claim to get compound effect.
      */
     function pendingRewards(address user) public view returns (uint256) {
         if (stakedBalance[user] == 0) {
@@ -104,7 +105,7 @@ contract AyzioToken is ERC20, Ownable, Pausable {
         uint256 daysStaked = stakingDuration / 1 days;
         
         // Calculate daily reward: (stakedBalance * DAILY_REWARD_RATE) / REWARD_RATE_DENOMINATOR
-        // This gives us 0.1% per day = 36.5% APY
+        // This gives us 0.1% per day simple interest
         uint256 dailyReward = (stakedBalance[user] * DAILY_REWARD_RATE) / REWARD_RATE_DENOMINATOR;
         uint256 totalRewards = dailyReward * daysStaked;
         
